@@ -42,7 +42,6 @@
 		// 入力結果に値があればそれを読み上げ、入力結果を初期化する
 		else {
 			synthesis.text = makeResponse(inputText);
-			document.querySelector('#area1').textContent = inputText;
 			inputText= defaultInputText;
 			speechSynthesis.speak(synthesis);
 		}
