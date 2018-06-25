@@ -17,9 +17,9 @@
 	let inputText= defaultInputText;
  
  
-	// 入力をもとに読み上げるテキストを生成する関数を定義する（オウム返しなので、ほとんどの場合でinputをそのままreturnします。）
+	// 入力をもとに読み上げるテキストを生成する関数を定義する
 	const makeResponse = (input) => {
-			return input;
+		return input;
 	};
  
  
@@ -27,13 +27,14 @@
  
 	// 聞き取り中に、マイクからの入力があったときのイベント
 	recognition.addEventListener('result', e => {
-		console.info(`recognition result : ${e.results[0][0].transcript}`);
  
 		// 入力結果をテキストで取得できるので、それをグローバル変数に格納し、聞き取りを終了する
 		inputText = e.results[0][0].transcript;
 		recognition.stop();
 	});
-
+ 
+	// 聞き取りを終了したときのイベント
+	recognition.addEventListener('end', () => {
  
 		// 入力結果が初期状態の場合は聞き取りが自動終了したと判断し、聞き取りを再開する
 		if (inputText === defaultInputText) {
@@ -42,10 +43,14 @@
 		// 入力結果に値があればそれを読み上げ、入力結果を初期化する
 		else {
 			synthesis.text = makeResponse(inputText);
+			document.querySelector('#area1').textContent = inputText;
 			inputText= defaultInputText;
 			speechSynthesis.speak(synthesis);
 		}
 	});
+ 
+	// 読み上げを終了したときのイベントを登録する
+	synthesis.addEventListener('end', () => {
  
 		// 聞き取りを再開する
 		recognition.start();
@@ -57,7 +62,7 @@
 </script>
 </head>
 <body>
-マイクに話した内容を認識し、発話が終了すると読み上げます。以下に認識された内容が表示されます。
+マイクに話した内容を認識し、発話が終了すると読み上げます。
 <div id="area1"></div>
 </body>
 </html>
