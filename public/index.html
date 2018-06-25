@@ -1,7 +1,310 @@
 <!DOCTYPE html>
-<html>
-<head></head>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Speech API</title>
+</head>
 <body>
-<h1>Hello world</h1>
+
+<!--
+    Gist1 ############## ここから
+-->
+<style>
+    #area1 {
+        width: 90%;
+        height: 3em;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+    #btn1 {
+        background: -webkit-linear-gradient(top,#008dfd 30%,#0370ea 100%);
+        color: white;
+        text-shadow: 1px 1px 1px #076bd2;
+        border-radius: 3px;
+        border: 1px solid #076bd2;
+        padding: 8px 25px;
+        font-weight: 700;
+        font-size: 15px;
+    }
+    #btn1.select {
+        background: -webkit-linear-gradient(top,#f2739e 30%,#f23f7b 100%);
+        text-shadow: 1px 1px 1px #f1115c;
+        border: 1px solid #f1115c;
+    }
+    #select1 {
+        width: 200px;
+    }
+</style>
+<h1>Speech Recognition</h1>
+<div id="area1"></div>
+<input id="btn1" type="button" value="音声認識を始める"/>
+<select id="select1">
+    <option value="ja-JP">日本語</option>
+    <option value="en-US">English</option>
+</select>
+<script>
+(function () {
+    var recognition;
+    var nowRecognition = false;
+    function start () {
+        recognition = new webkitSpeechRecognition();
+        recognition.lang = document.querySelector('#select1').value;
+        console.debug('[lang]', recognition.lang);
+        recognition.onresult = function (e) {
+            console.debug('[onresult]');
+            if (e.results.length > 0) {
+                var value = e.results[0][0].transcript;
+                document.querySelector('#area1').textContent = value;
+            }
+        };
+        recognition.onstart = function () {
+            console.debug('[onstart]');
+        };
+        recognition.onaudiostart = function () {
+            console.debug('[onaudiostart]');
+        }
+        recognition.onsoundstart = function () {
+            console.debug('[onsoundstart]');
+        }
+        recognition.onspeechstart = function () {
+            console.debug('[onspeechstart]');
+        }
+        recognition.onspeechend = function () {
+            console.debug('[onspeechend]');
+        }
+        recognition.onsoundend = function () {
+            console.debug('[onsoundend]');
+        }
+        recognition.onaudioend = function () {
+            console.debug('[audioend]');
+        }
+        recognition.onnomatch = function () {
+            console.debug('[onnomatch]');
+        }
+        recognition.onerror = function () {
+            console.debug('[onerror]');
+        }
+        recognition.onstart = function () {
+            console.debug('[onstart]');
+        }
+        recognition.onend = function () {
+            console.debug('[onend]');
+        }
+        recognition.start();
+        nowRecognition = true;
+    };
+    function stop () {
+        recognition.stop();
+        nowRecognition = false;
+    }
+    document.querySelector('#btn1').onclick = function () {
+
+        // unsupported.
+        if (!'webkitSpeechRecognition' in window) {
+            alert('Web Speech API には未対応です.');
+            return;
+        }
+
+        if (nowRecognition) {
+            stop();
+            this.value = '音声認識を始める';
+            this.className = '';
+        } else {
+            start();
+            this.value = '音声認識を止める';
+            this.className = 'select';
+        }
+    }
+})();
+</script>
+<!--
+    Gist1 ############## ここまで
+-->
+
+<br>
+<br>
+<br>
+
+<!--
+    Gist2 ############## ここから
+-->
+<style>
+    #area2 {
+        width: 90%;
+        height: 3em;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+    #btn2 {
+        background: -webkit-linear-gradient(top,#008dfd 30%,#0370ea 100%);
+        color: white;
+        text-shadow: 1px 1px 1px #076bd2;
+        border-radius: 3px;
+        border: 1px solid #076bd2;
+        padding: 8px 25px;
+        font-weight: 700;
+        font-size: 15px;
+    }
+    #btn2.select {
+        background: -webkit-linear-gradient(top,#f2739e 30%,#f23f7b 100%);
+        text-shadow: 1px 1px 1px #f1115c;
+        border: 1px solid #f1115c;
+    }
+    #select2 {
+        width: 200px;
+    }
+</style>
+<h1>Speech Recognition2</h1>
+<div id="area2"><span class="final" id="final_span"></span> <span class="interim" id="interim_span"></span></div>
+<input id="btn2" type="button" value="音声認識を継続的に行う"/>
+<select id="select2">
+    <option value="ja-JP">日本語</option>
+    <option value="en-US">English</option>
+</select>
+<script>
+(function () {
+    var recognition;
+    var nowRecognition = false;
+    var $finalSpan = document.querySelector('#final_span');
+    var $interimSpan = document.querySelector('#interim_span');
+    function start () {
+        recognition = new webkitSpeechRecognition();
+        recognition.lang = document.querySelector('#select2').value;
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = function (e) {
+            console.debug('[onresult]', e.results.length);
+            var finalText = '';
+            var interimText = '';
+            for (var i = 0; i < e.results.length; i++) {
+                if (e.results[i].isFinal) {
+                    finalText += e.results[i][0].transcript;
+                } else {
+                    interimText += e.results[i][0].transcript;
+                }
+            }
+            $interimSpan.textContent = interimText;
+            $finalSpan.textContent = finalText;
+        };
+        recognition.onstart = function () {
+            console.debug('[onstart]');
+        };
+        recognition.onaudiostart = function () {
+            console.debug('[onaudiostart]');
+        }
+        recognition.onsoundstart = function () {
+            console.debug('[onsoundstart]');
+        }
+        recognition.onspeechstart = function () {
+            console.debug('[onspeechstart]');
+        }
+        recognition.onspeechend = function () {
+            console.debug('[onspeechend]');
+        }
+        recognition.onsoundend = function () {
+            console.debug('[onsoundend]');
+        }
+        recognition.onaudioend = function () {
+            console.debug('[audioend]');
+        }
+        recognition.onnomatch = function () {
+            console.debug('[onnomatch]');
+        }
+        recognition.onerror = function () {
+            console.debug('[onerror]');
+        }
+        recognition.onstart = function () {
+            console.debug('[onstart]');
+        }
+        recognition.onend = function () {
+            console.debug('[onend]');
+        }
+        recognition.start();
+        nowRecognition = true;
+    };
+    function stop () {
+        recognition.stop();
+        nowRecognition = false;
+    }
+    document.querySelector('#btn2').onclick = function () {
+
+        // unsupported.
+        if (!'webkitSpeechRecognition' in window) {
+            alert('Web Speech API には未対応です.');
+            return;
+        }
+
+        if (nowRecognition) {
+            stop();
+            this.value = '音声認識を継続的に行う';
+            this.className = '';
+        } else {
+            start();
+            this.value = '音声認識を止める';
+            this.className = 'select';
+        }
+    }
+})();
+</script>
+<!--
+    Gist2 ############## ここまで
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<p style="font-weight:700;">Input words below.</p>
+<input id="text1" type="text" value="こんにちは、私は横浜市に住んでいます。" style="width:80%; height: 50px; font-size: 150%; padding: 0 20px;"/><br>
+<br>
+<input id="btn3" type="button" value="speech" style="width:200px;"/>
+<select id="selectVoice">
+    <option value="ja-JP">日本語</option>
+    <option value="en-US">English</option>
+</select>
+
+<script>
+document.querySelector('#btn3').onclick = function () {
+
+    // unsupported.
+    if (!'SpeechSynthesisUtterance' in window) {
+        alert('Web Speech API には未対応です.');
+        return;
+    }
+
+    var msg = new SpeechSynthesisUtterance();
+    msg.volume = 1;
+    msg.rate = 1;
+    msg.pitch = 2;
+    msg.text = document.querySelector('#text1').value;
+    msg.lang = document.querySelector('#selectVoice').value;
+    msg.onend = function (event) {
+        console.log('speech end. time=' + event.elapsedTime + 's');
+    }
+    speechSynthesis.speak(msg);
+};
+</script>
+
+
+
+
+
 </body>
 </html>
