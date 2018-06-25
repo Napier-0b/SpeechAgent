@@ -59,6 +59,7 @@
 		// 入力結果に値があればそれを読み上げ、入力結果を初期化する
 		else {
 			synthesis.text = makeResponse(inputText);
+			document.querySelector('#area1').textContent = inputText;
 			inputText= defaultInputText;
 			speechSynthesis.speak(synthesis);
 		}
@@ -79,5 +80,6 @@
 </head>
 <body>
 マイクに話した内容を認識し、発話が終了すると読み上げます。
+<div id="area1"></div>
 </body>
 </html>
