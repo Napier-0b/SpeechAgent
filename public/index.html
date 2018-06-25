@@ -19,25 +19,11 @@
  
 	// 入力をもとに読み上げるテキストを生成する関数を定義する（オウム返しなので、ほとんどの場合でinputをそのままreturnします。）
 	const makeResponse = (input) => {
-		if (input.includes('ありがとう')) {
-			return 'どういたしまして';
-		} else {
 			return input;
-		}
 	};
  
  
 	// 各種イベントを登録する
- 
-	// 聞き取りを開始したときのイベント（挙動を把握しやすくするためにconsoleへの出力を定義）
-	recognition.addEventListener('start', () => {
-		console.info('recognition start');
-	});
- 
-	// 読み上げを開始したときのイベント（挙動を把握しやすくするためにconsoleへの出力を定義）
-	synthesis.addEventListener('start', () => {
-		console.info('synthesis start');
-	});
  
 	// 聞き取り中に、マイクからの入力があったときのイベント
 	recognition.addEventListener('result', e => {
@@ -47,10 +33,7 @@
 		inputText = e.results[0][0].transcript;
 		recognition.stop();
 	});
- 
-	// 聞き取りを終了したときのイベント
-	recognition.addEventListener('end', () => {
-		console.info(`recognition end. input text = ${inputText}`);
+
  
 		// 入力結果が初期状態の場合は聞き取りが自動終了したと判断し、聞き取りを再開する
 		if (inputText === defaultInputText) {
@@ -65,10 +48,6 @@
 		}
 	});
  
-	// 読み上げを終了したときのイベントを登録する
-	synthesis.addEventListener('end', () => {
-		console.info(`synthesis end`);
- 
 		// 聞き取りを再開する
 		recognition.start();
 	});
@@ -79,7 +58,7 @@
 </script>
 </head>
 <body>
-マイクに話した内容を認識し、発話が終了すると読み上げます。
+マイクに話した内容を認識し、発話が終了すると読み上げます。以下に認識された内容が表示されます。
 <div id="area1"></div>
 </body>
 </html>
