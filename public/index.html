@@ -3,29 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Speech-Text-Synthesis</title>
-</head>
-<body>
-マイクに話した内容を認識し、発話が終了すると以下に表示したうえで読み上げます。<br>
-ちょっとした声も全部拾って読み上げてしまうので、喋りたい時だけマイクのスイッチをオンにすることをおすすめします。<br>
-	<br>
-認識内容：<div id="recognizedText"></div><br>
-Output language
-	<select id="selectVoice">
-		<option value="voices[7]">Japanese (Google 日本人 ja-JP)</option>
-		<option value="voices[0]">English (Google US English en-US)</option>
-	</select><br>
-	<img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
-	How to use it in VRChat?: <a href="">Qiita guide</a><br>
-	Contact: <a href="https://twitter.com/Napier_SunPro">@Napier_SunPro</a> (Notlob on VRChat)
-	
 	<script>
  
 	// 利用するWebAPIをインスタンス化する
 	window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 	const recog = new SpeechRecognition();
-	const synth = new SpeechSynthesisUtterance();
-	
-	synth.voice = document.querySelector("#selectVoice").value;
+	const synth = new SpeechSynthesisUtterance();	
 	
 	const defaultInput = "";
 	let input = defaultInput;
@@ -55,7 +38,7 @@ Output language
 		}
 	});
  
-	// 読み上げを終了したときのイベントを登録する
+	// 読み上げを終了したときのイベント
 	synth.addEventListener("end", () => {
  
 		// 聞き取りを再開する
@@ -65,6 +48,15 @@ Output language
 	// 聞き取りを開始する
 	recog.start();
  
-	</script>
+</script>
+</head>
+<body>
+マイクに話した内容を認識し、発話が終了すると以下に表示したうえで読み上げます。<br>
+ちょっとした声も全部拾って読み上げてしまうので、喋りたい時だけマイクのスイッチをオンにすることをおすすめします。<br>
+<br>
+認識内容：<div id="recognizedText"></div><br>
+<img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
+How to use it in VRChat?: <a href="">Qiita guide</a><br>
+Contact: <a href="https://twitter.com/Napier_SunPro">@Napier_SunPro</a> (Notlob on VRChat)
 </body>
 </html>
