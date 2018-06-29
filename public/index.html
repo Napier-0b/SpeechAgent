@@ -10,10 +10,19 @@
 	const recog = new SpeechRecognition();
 	const synth = new SpeechSynthesisUtterance();	
 	
+	// 設定項目
+	var pitchSetting = 1.0;  // ピッチ 0(min) - 2(max), default 1.0
+	var volumeSetting = 1.0; // 音量 0(min) - 1(max), default 1.0
+	var rateSetting = 1.0; // 話す速さ 0.1(min) - 10(max), default 1.0
+	// 設定項目終わり
+
 	const defaultInput = "";
 	let input = defaultInput;
  
- 
+	synth.pitch = pitchSetting;
+	synth.volume = volumeSetting;
+	synth.rate = rateSetting; 
+	
 	// 聞き取り中に、マイクからの入力があったときのイベント
 	recog.addEventListener("result", e => {
  
@@ -56,7 +65,7 @@
 <br>
 認識内容：<div id="recognizedText"></div><br>
 <img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
-How to use it in VRChat?: <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita guide</a><br>
+How to use it in VRChat? <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita guide</a><br>
 Contact: <a href="https://twitter.com/Napier_SunPro">@Napier_SunPro</a> (Notlob on VRChat)
 </body>
 </html>
