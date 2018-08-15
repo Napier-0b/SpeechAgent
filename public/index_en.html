@@ -18,7 +18,8 @@
 
 	const defaultInput = "";
 	let input = defaultInput;
- 
+	
+	recog.lang = "en-US";
 	synth.pitch = pitchSetting;
 	synth.volume = volumeSetting;
 	synth.rate = rateSetting; 
@@ -60,13 +61,13 @@
 </script>
 </head>
 <body>
-マイクに話した内容を認識し、発話が終了すると以下に表示したうえで読み上げます。<br>
-ちょっとした声も全部拾って読み上げてしまうので、喋りたい時だけマイクのスイッチをオンにすることをおすすめします。<br>
+Your Speech -> Voice Recognition -> Repeats the text using synthesized voice from your browser.<br>
+It is highly recommended that you turn on the microphone <b>only when you are going to speak</b>, as it also recognizes background noise e.g. TV chatter.<br>
 <br>
-認識内容：<div id="recognizedText"></div><br>
+Recognized text：<div id="recognizedText"></div><br>
 <img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
-How to use it in VRChat? <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita guide</a><br>
-Contact: <a href="https://twitter.com/Napier_SunPro">@Napier_SunPro</a> (Notlob on VRChat)
-<a href="index_en.html">English version</a>
+How to use it in VRChat? <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita guide(Japanese)</a><br>
+Contact: <a href="https://twitter.com/Napier_SunPro">@Napier_SunPro</a> (Notlob on VRChat, English available)
+<a href="index.html">Japanese version</a>
 </body>
 </html>
