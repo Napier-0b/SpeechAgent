@@ -1,7 +1,7 @@
 body {
 	margin 0;
 	padding 0;
-	background: #ffffcc;
+	background: #ffffdd;
 }
 
 header, .header {
@@ -11,8 +11,8 @@ header, .header {
 }
 
 nav, .nav {
-	background: #ffffff
-	color: #000000
+	background: #ffffff;
+	color: #000000;
 	padding: 9px;
 }
 
@@ -50,14 +50,24 @@ footer, .footer {
 	padding: 9px;
 }
 
-.container {
+.tekito-container {
 	overflow: hidden;
 }
 
-.container::after {
+.tekito-container::after {
 	content: "";
 	clear: both;
 	display: block;
+}
+
+.myvideo {
+	background: #dddddd;
+	width: 100%;
+}
+
+.nanimo-shinai-input {
+	width: 100%;
+	background: #f0f0f0;
 }
 
 label {
