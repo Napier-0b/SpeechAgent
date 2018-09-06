@@ -19,6 +19,7 @@ header > nav{
 	color: #000000;
 	padding: 9px;
 	text-align: left;
+	box-shadow: 0 0 10px #ffff00;
 }
 
 header > nav:active {
@@ -49,15 +50,21 @@ section, .section {
 	border-radius: 12px;
 }
 
+section:nth-of-type(3) {
+	text-shadow: 0 0 10px #0000ff;
+}
+
 article, .article {
 	background: #ffffff;
 	color: #000000;
 	padding: 9px;
+	box-shadow: 0 0 20px #000000 inset;
 }
 
 article:hover {
 	background: #000000;
-	color: #ffffff
+	color: #ffffff;
+	box-shadow: 0 0 40px #ffffff inset;
 }
 
 article:first-child {
