@@ -1,19 +1,35 @@
+@charset "UTF-8";
+
 body {
 	margin 0;
 	padding 0;
 	background: #ffffdd;
+	font-family: Calibri, Arial
 }
 
-header, .header {
+header {
 	background: #7a98a9;
 	color: #ffffff;
 	padding: 9px;
+	text-align: center;
 }
 
-nav, .nav {
+header > nav{
 	background: #ffffff;
 	color: #000000;
 	padding: 9px;
+	text-align: left;
+}
+
+header > nav:active {
+	background: #000000;
+	color: #ffffff;
+}
+
+header > nav:active::after {
+	background: #000000;
+	color: #ffffff;
+	content: "がクリックすると反応はする"
 }
 
 main, .main {
@@ -29,12 +45,23 @@ section, .section {
 	color= #ffffff;
 	padding: 9px;
 	margin-bottom: 9px;
+	border: 3px dotted #000000;
+	border-radius: 12px;
 }
 
 article, .article {
 	background: #ffffff;
 	color: #000000;
 	padding: 9px;
+}
+
+article:hover {
+	background: #000000;
+	color: #ffffff
+}
+
+article:first-child {
+	font-size: 30px;
 }
 
 aside, .aside {
@@ -55,7 +82,7 @@ footer, .footer {
 }
 
 .tekito-container::after {
-	content: "";
+	content: "[工事中]←この文字列も含めCSSによる疑似要素(::after)なのでテキストとして選択できない";
 	clear: both;
 	display: block;
 }
