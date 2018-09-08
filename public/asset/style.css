@@ -25,20 +25,29 @@ header > nav{
 header > nav:active {
 	background: #000000;
 	color: #ffffff;
+	height: 200px;
+	transition: all ease 0.5s;
 }
 
 header > nav:active::after {
-	background: #000000;
-	color: #ffffff;
 	content: "がクリックすると反応はする"
 }
 
 main, .main {
 	float: left;
 	width: 70%;
-	background: #53b1da;
+	animation: colorchange linear 1.0s infinite alternate;
 	padding: 9px;
 	box-sizing: border-box;
+}
+
+@keyframes colorchange {
+	0% {
+		background: #53b1da;
+	}
+	100% {
+		background: #ffffff;
+	}
 }
 
 section, .section {
@@ -72,6 +81,7 @@ article:first-child {
 }
 
 aside, .aside {
+	background: radial-gradient(#6666ff, #ff6666);
 	float: right;
 	width: 30%;
 	padding: 9px;
@@ -95,7 +105,7 @@ footer, .footer {
 }
 
 .myvideo {
-	background: #dddddd;
+	background: linear-gradient(#000000,#dddddd);
 	width: 100%;
 }
 
