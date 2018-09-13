@@ -1,89 +1,105 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>HTML/CSS実習ページ</title>
-		<link rel="stylesheet" href="asset/style.css">
-		<script src="asset/main.js"></script>
-	</head>
-	<body>
-		<header>
-			自分用タスク置き場兼HTMLとCSSの実践
-			<nav>ナビゲーションメニューなんてものはない</nav>
-		</header>
-		<div class="tekito-container">
-			<main>
-				メインコンテンツ
-				<section>
-					3Dのこと
-					<article><strong>Blender</strong>使えるようになりたい</article>
-					<article><strong>Substance Painter</strong>も使えるようになりたい</article>
-					<article><abbr title="Ubuntuのではなく、ゲームエンジンのほう">Unity</abbr>もやりたい</article>
-				</section>
-				<section>
-					プヨグヤミンのこと
-					<article>HTML5 is 何</article>
-					<article>vue.js and node.js are 何</article>
-					<article>Ruby on Rails is 何</article>
-					<article>アルゴリズム is 何</article>
-				</section>
-				<section>
-					デザイン・画像映像編集のこと
-					<article>Photoshopも使えないのは悲しい</article>
-					<article>AviutlとAfter Effectsは使えるようになりたい</article>
-					<article>えっ、InDesignとLaTeXも使えないの？</article>
-				</section>
-			</main>
-			<aside>
-				著者プロフィール<br>
-				<figure>
-					<img src="asset/authorpic.jpg" alt="適当なプロフィール画">
-					<figcaption>著者はこんな顔ではありません。</figcaption>
-				</figure>
-				フォントや体裁が美しくないかもしれませんが、CSSの練習のためであってこのデザインやよしと思っているわけではありません。<br>
-				<script>
-					document.write("この行はJavaScriptによって表示されています。")
-				</script>
-			</aside>
-		</div>
-		<div class="myvideo">
-			<video width="427" height="240" controls>
-				<source src="asset/bounce.mp4" tpye="video/mp4">
-				この動画形式はお使いの環境ではサポートされていません。
-			</video>
-		</div>
-		<div class="nanimo-shinai-input">
-			<label>
-				何でもないチェックボックス<input type="checkbox" value="true">
-			</label>
-			<label>
-				ただの数値欄(0～100)20刻み
-				<input type="number" min="0" max="100" step="20" value="0">
-			</label>
-			<label>
-				何かを書いておく欄
-				<textarea></textarea>
+
+<head>
+	<meta charset="utf-8">
+	<title>HTML/CSS実習ページ</title>
+	<link rel="stylesheet" href="asset/style.css">
+	<script src="asset/main.js"></script>
+</head>
+
+<body>
+	<header>
+		自分用タスク置き場兼HTMLとCSSの実践<br>
+		<a href="test2.html">ページ2</a>
+		<nav>ナビゲーションメニューなんてものはない</nav>
+	</header>
+	<div class="tekito-container">
+		<main>
+			メインコンテンツ
+			<section>
+				3Dのこと
+				<article><strong>Blender</strong>使えるようになりたい</article>
+				<article><strong>Substance Painter</strong>も使えるようになりたい</article>
+				<article><abbr title="Ubuntuのではなく、ゲームエンジンのほう">Unity</abbr>もやりたい</article>
+			</section>
+			<section>
+				プヨグヤミンのこと
+				<article>HTML5 is 何</article>
+				<article>vue.js and node.js are 何</article>
+				<article>Ruby on Rails is 何</article>
+				<article>アルゴリズム is 何</article>
+			</section>
+			<section>
+				デザイン・画像映像編集のこと
+				<article>Photoshopも使えないのは悲しい</article>
+				<article>AviutlとAfter Effectsは使えるようになりたい</article>
+				<article>えっ、InDesignとLaTeXも使えないの？</article>
+			</section>
+		</main>
+		<aside>
+			著者プロフィール<br>
+			<figure>
+				<img src="asset/authorpic.jpg" alt="適当なプロフィール画">
+				<figcaption>著者はこんな顔ではありません。</figcaption>
+			</figure>
+			フォントや体裁が美しくないかもしれませんが、CSSの練習のためであってこのデザインやよしと思っているわけではありません。<br>
+			<script>
+				document.write("この行はJavaScriptによって表示されています。")
+			</script>
+		</aside>
+	</div>
+	<div class="myvideo">
+		<video width="427" height="240" controls>
+			<source src="asset/bounce.mp4" tpye="video/mp4">
+			この動画形式はお使いの環境ではサポートされていません。
+		</video>
+	</div>
+	<div class="nanimo-shinai-input">
+		<label>
+			何でもないチェックボックス<input type="checkbox" value="true" required>
+		</label>
+		<label>
+			ただの数値欄(0～100)20刻み
+			<input type="number" min="0" max="100" step="20" value="0" required>
+		</label>
+		<label>
+			文字記入欄
+			<input pattern="^a.*" title="aから始まる文字以外受け付けません" autofocus>
+		</label>
+		<label>
+			名前オートコンプリート欄
+			<input autocomplete="name" required>
+		</label>
+		<label>
+			<input type="email" readonly value="a@b.com">
+			<input type="email" disabled value="a@b.com">
+		</label>
+		<label>
+			何かを書いておく欄
+			<textarea></textarea>
 			<label>
 				スマーホホンだとメールアドレス入力用キーボードになるらしい欄
 				<input type="email" placeholder="nantoka@example.com">
 			</label>
-				電話番号用キーボードになるらしい欄
-				<input type="tel" placeholder="012-3456-7890">
-			</label>
-			</label>
-				日付
-				<input type="date">
-			</label>
-			</label>
-				時間
-				<input type="time">
-			</label>
-			</label>
-				進捗バー
-				<progress value="10" max="100"></progress>
-			</label>
-			<button type="submit">何を送信するでもないボタン</button>
-		</div>
-		<footer><time datetime="2018-09-05">2018年9月5日</time>初版　2018年9月8日最終更新</footer>
-	</body>
+			電話番号用キーボードになるらしい欄
+			<input type="tel" minlength="10" maxlength="11" placeholder="01234567890">
+		</label>
+		</label>
+		日付
+		<input type="date">
+		</label>
+		</label>
+		時間
+		<input type="time">
+		</label>
+		</label>
+		進捗バー
+		<progress value="10" max="100"></progress>
+		</label>
+		<button type="submit">何を送信するでもないボタン</button>
+	</div>
+	<footer><time datetime="2018-09-05">2018年9月5日</time>初版　2018年9月8日最終更新</footer>
+</body>
+
 </html>

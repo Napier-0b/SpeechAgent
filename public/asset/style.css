@@ -117,3 +117,13 @@ footer, .footer {
 label {
 	display: block;
 }
+
+label:invalid{
+	border:2px solid #be2a5b;
+	background: #f2c6d5;
+}
+
+label:valid{
+	border:2px solid #139174;
+	background: #b3f5e6;
+}
