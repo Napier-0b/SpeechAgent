@@ -1,60 +1,30 @@
 body {
-	padding: 0;
-	margin: 0;
-	margin-top: 50px;
-	background-color: #4d3948;
+    margin: 0;
+    padding: 0;
 }
 
-.top-anchor {
-	display: block;
-	position: relative;
-	top: -50px;
-	visibility: hidden;
+ul {
+    overflow: auto;
+    list-style: none;
+    border-bottom: 2px solid #aaaaaa;
 }
 
-.header {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	background-color: #3e313c;
-	color: #ffffff;
-	height: 50px;
-	z-index: 10;
+ul::after {
+    content: "";
+    clear: both;
+    display: block;
 }
 
-.container {
-	position: relative;
-	/*absoluteと違い、要素が元いた場所は空けておかれる*/
+li {
+    float: left;
+    padding: 7px 10px;
+    border-top: 2px solid #aaaaaa;
+    border-right: 2px solid #aaaaaa;
+    border-bottom: 2px solid #aaaaaa;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
-.menu {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 20%;
-	color: #ffffff;
-}
-
-.contents {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 80%;
-}
-
-.box {
-	height: 300px;
-}
-
-.jump-to-top {
-	position: fixed;
-	right: 20px;
-	bottom: 20px;
-	background-color: #ffffff;
-	z-index: 15;
-	font-size: 14px;
-	padding: 5px 20px;
-	border-radius: 15px;
-	text-align: center;
+li:hover {
+    background: #e0e0e0;
 }
