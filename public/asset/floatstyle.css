@@ -20,7 +20,7 @@ li {
     padding: 7px 10px;
     border-top: 2px solid #aaaaaa;
     border-right: 2px solid #aaaaaa;
-    border-bottom: 2px solid #aaaaaa;
+    border-left: 2px solid #aaaaaa;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
