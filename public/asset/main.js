@@ -25,9 +25,9 @@ arr1.forEach((elem) => console.log(elem + vingt));
 console.log("-----");
 
 class Vehicle {
-	static askColorPattern() {
+	static askColorsAvailable() {
 		return "Red, Blue, Green, White";
-		/*車両インスタンスを生成する前にしか聞けない、なぜなら生産された車はもう塗られている*/
+		//車両インスタンスを生成する前にしか聞けない、なぜなら生産された車はもう塗られているから
 	}
 	constructor(loadedFuel, colorChoice = "Red", fuelConsOfTheVehicle = 1) {
 		this.fuel = loadedFuel;
@@ -41,7 +41,7 @@ class Vehicle {
 }
 
 class Plane extends Vehicle {
-	/* クラスの継承 */
+	// クラスの継承 
 	constructor(loadedFuel, colorChoice) {
 		const fuelConsOfTheVehicle = 3;
 		super(loadedFuel, colorChoice, fuelConsOfTheVehicle);
@@ -55,4 +55,21 @@ Car1.move(10);
 Jet1.move(30);
 console.log(Car1.bodyColor);
 console.log(Jet1.bodyColor);
-console.log(Vehicle.askColorPattern());
+console.log(Vehicle.askColorsAvailable());
+
+const anObjectOfPromise = new Promise((resolve, reject) => {
+	resolve("piyo");
+})
+
+anObjectOfPromise.then(someData => {
+	console.log(someData); //anObjectOfPromiseがfulfilledのとき、「与えられた引数をconsoleに出力する」という関数を実行する
+});
+
+const match = arr1.find((elem) => { return elem % 2 === 0; }); //arr1の要素が順にfind内の無名関数に渡され、要素が2の倍数の時にtrueがfind()に返る。そしてその時の要素がmatchに代入される
+
+console.log(`arr1の要素${arr1}の中で最初の2の倍数は${match}`);
+
+const Car2 = Object.assign({}, Car1);
+Car2.bodyColor = "Red";
+console.log(Car1.bodyColor);
+console.log(Car2.bodyColor);
