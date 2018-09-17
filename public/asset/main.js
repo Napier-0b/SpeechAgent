@@ -1,7 +1,7 @@
 "use strict";
 
-var poyo = "Hi I am poyo.";
-var vingt = 20;
+let poyo = "Hi I am poyo.";
+let vingt = 20;
 
 function add(x, y) {
 	console.log(x + y);
@@ -19,7 +19,7 @@ calcfunc(3, vingt, add);
 console.log(multiply(3, 5));
 console.log(calcfunc(3, 5, multiply));
 
-const arr1 = [1, 3, 4, 6, 8];
+let arr1 = [1, 3, 4, 6, 8];
 arr1.forEach((elem) => console.log(elem + vingt));
 
 console.log("-----");
@@ -73,3 +73,6 @@ const Car2 = Object.assign({}, Car1);
 Car2.bodyColor = "Red";
 console.log(Car1.bodyColor);
 console.log(Car2.bodyColor);
+
+arr1 = arr1.filter((elem) => { return elem % 2 === 0; });
+console.log(arr1);
