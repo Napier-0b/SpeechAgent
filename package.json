@@ -1,8 +1,10 @@
 {
   "name": "heroku-static-provider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "express": "~3.3.4"
+    "express": "~4.16.4",
+    "compression": "~1.7.3",
+    "morgan": "~1.9.1"
   }
 }
