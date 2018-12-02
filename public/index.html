@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Speech-Text-Synthesis</title>
+	<title>Speech-to-Talkback</title>
 	<script>
 
 		// 利用するWebAPIをインスタンス化する
@@ -60,6 +60,12 @@
 		// 聞き取りを開始する
 		recog.start();
 
+		function initSpeak() {
+			let initSynth = new SpeechSynthesisUtterance("自動読み上げ　有効");
+			initSynth.lang = "ja-JP";
+			speechSynthesis.speak(initSynth);
+		}
+
 	</script>
 </head>
 
@@ -69,6 +75,7 @@
 	ちょっとした声も全部拾って読み上げてしまうので、喋りたい時だけマイクのスイッチをオンにすることをおすすめします。<br>
 	<br>
 	認識内容：<div id="recognizedText"></div><br>
+	<button onclick="initSpeak();">最初に一度押してください</button>（APIの仕様変更によりユーザーがボタンを押して許可することが必要になりました。「自動読み上げ有効」と読み上げられます）<br>
 	<img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
 	How to use it in VRChat? <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita
 		guide</a><br>

@@ -1,4 +1,4 @@
-# Speech-to-Text-to-Readback using built-in WebSpeechAPI
+# Speech-to-Talkback using built-in WebSpeechAPI
 
 [こちらで稼働中です(Heroku Free Dynoのため起動に時間がかかることがあります)](https://floating-badlands-96748.herokuapp.com/)
 

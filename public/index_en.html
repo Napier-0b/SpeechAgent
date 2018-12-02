@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Speech-Text-Synthesis</title>
+	<title>Speech-to-Talkback</title>
 	<script>
 
 		// 利用するWebAPIをインスタンス化する
@@ -60,6 +60,9 @@
 		// 聞き取りを開始する
 		recog.start();
 
+		function initSpeak() {
+			speechSynthesis.speak(new SpeechSynthesisUtterance("Auto-talkback enabled."));
+		}
 	</script>
 </head>
 
@@ -70,6 +73,7 @@
 	recognizes background noise e.g. TV chatter.<br>
 	<br>
 	Recognized text：<div id="recognizedText"></div><br>
+	<button onclick="initSpeak();">Press here to enable auto-talkback</button>（Due to the WebspeechAPI update in Dec. 2018, explicit action to trigger speaking is required to enable auto-talkback feature. When pressed, it speaks "auto-talkback enabled."）<br>
 	<img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
 	How to use it in VRChat? <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita
 		guide(Japanese)</a><br>
