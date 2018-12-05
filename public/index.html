@@ -3,91 +3,56 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Speech-to-Talkback</title>
-	<script>
-		let talkbackEnabled = false;
-
-		function talkback(){
-			// 利用するWebAPIをインスタンス化する
-			window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-			const recog = new SpeechRecognition();
-			const synth = new SpeechSynthesisUtterance();
-
-			// 設定項目
-			const pitchSetting = 1.0;  // ピッチ 0(min) - 2(max), default 1.0
-			const volumeSetting = 1.0; // 音量 0(min) - 1(max), default 1.0
-			const rateSetting = 1.0; // 話す速さ 0.1(min) - 10(max), default 1.0
-			// 設定項目終わり
-
-			const defaultInput = "";
-			let input = defaultInput;
-
-			recog.lang = "ja-JP";
-			synth.lang = "ja-JP";
-			synth.pitch = pitchSetting;
-			synth.volume = volumeSetting;
-			synth.rate = rateSetting;
-
-			// 聞き取り中に、マイクからの入力があったときのイベント
-			recog.addEventListener("result", e => {
-
-				// 入力結果をテキストで取得し、それをグローバル変数に格納し、聞き取りを終了する
-				input = e.results[0][0].transcript;
-				recog.stop();
-			});
-
-			// 聞き取りを終了したときのイベント
-			recog.addEventListener("end", () => {
-
-				// 入力結果が初期状態の場合は聞き取りが自動終了したと判断し、聞き取りを再開する
-				if (input === defaultInput) {
-					recog.start();
-				}
-				// 入力結果に値があればそれを読み上げ、入力結果を初期化する
-				else {
-					synth.text = input;
-					document.querySelector("#recognizedText").textContent = input;
-					input = defaultInput;
-					speechSynthesis.speak(synth);
-				}
-			});
-
-			// 読み上げを終了したときのイベント
-			synth.addEventListener("end", () => {
-
-				// 聞き取りを再開する
-				recog.start();
-			});
-
-			// 聞き取りを開始する
-			recog.start();
-		}
-
-		function initSpeak() {
-			let initSynth = new SpeechSynthesisUtterance("自動読み上げ　有効");
-			initSynth.lang = "ja-JP";
-			speechSynthesis.speak(initSynth);
-			if(!talkbackEnabled){
-				talkback();
-			}
-			talkbackEnabled = true;
-		}
-
-	</script>
+	<title>SpeechAgent</title>
+	<link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script type="text/javascript" src="asset/talkback_ja.js"></script>
 </head>
 
 <body>
-	ブラウザによりWeb Speech APIの対応状況が異なっているため、Google Chromeを利用されることを強く推奨します。<br>
-	マイクに話した内容を認識し、発話が終了すると以下に表示したうえで読み上げます。<br>
-	ちょっとした声も全部拾って読み上げてしまうので、喋りたい時だけマイクのスイッチをオンにすることをおすすめします。<br>
-	<br>
-	認識内容：<div id="recognizedText"></div><br>
-	<button onclick="initSpeak();">最初に一度押してください</button>（APIの仕様変更によりユーザーがボタンを押して許可することが必要になりました。「自動読み上げ有効」と読み上げられます）<br>
-	<img src="floatingBadland96748.png" alt="FloatingBadland96748"><br>
-	How to use it in VRChat? <a href="https://qiita.com/Napier-JP/items/a22dfabbca8bc37eac34#netduetto%E3%81%AE%E6%BA%96%E5%82%99">Qiita
-		guide</a><br>
-	Contact: <a href="https://twitter.com/Napier_SunPro">@Napier_SunPro</a> (NapierJP on VRChat)
-	<a href="index_en.html">English version</a>
+	<nav class="navbar nav navbar-expand-md navbar-dark bg-dark">
+		<a class="navbar-brand" href="index.html">
+			SpeechAgent
+		</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="index.html">日本語</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index_en.html">English</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="help_jp.html">Help</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="https://github.com/Napier-JP/SpeechAgent"><img src="asset/GitHub-Mark-Light-64px.png" alt="logo" height="40px"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://twitter.com/Napier_SunPro"><img src="asset/Twitter_Social_Icon_Circle_Color.png" alt="logo" height="40px"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://napier-jp.github.io/0bsolete-Lab/"><img src="asset/bg-nw-logo-round-small.png" alt="logo" height="40px"></a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container">
+		<div class="text-center mt-4 mb-4">
+			<img src="asset/concept.png" alt="concept">
+		</div>
+		マイクに話した内容を認識し、発話が終了すると以下に表示したうえで読み上げます。<br>
+		認識内容：<div class="text-primary" id="recognizedText"></div><br>
+		<div class="alert alert-info mt-4" role="alert">
+			<button id="activation" class="btn-warning" onclick="initSpeak();">最初に一度押してください</button><br>
+			APIの仕様変更によりユーザーがボタンを押して許可することが必要になりました。押すと「自動読み上げ有効」と読み上げられます。<br>
+		</div>
+		<div class="alert alert-danger" role="alert">
+			Web Speech APIは正式採用されておらず各ブラウザで対応状況が異なっているため、Google Chromeを利用されることを強く推奨します。<br>
+			ちょっとした声も全部拾って読み上げてしまうので、喋りたい時だけマイクのスイッチをオンにすることをおすすめします。<br>
+		</div>
+	</div>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 # Speech-to-Talkback using built-in WebSpeechAPI
 
-[こちらで稼働中です(Heroku Free Dynoのため起動に時間がかかることがあります)](https://floating-badlands-96748.herokuapp.com/)
+[こちらで稼働中です(Heroku Free Dynoのため起動に時間がかかることがあります)](https://speech-agent.herokuapp.com/)
 
 ## 想定するユーザ
 - Windows10を使用していて、

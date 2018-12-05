@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>How to use SpeechAgent</title>
+    <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar nav navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">
+            SpeechAgent
+        </a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">日本語</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index_en.html">English</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="help_en.html">Help</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/Napier-JP/SpeechAgent"><img src="asset/GitHub-Mark-Light-64px.png" alt="logo" height="40px"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://twitter.com/Napier_SunPro"><img src="asset/Twitter_Social_Icon_Circle_Color.png" alt="logo" height="40px"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://napier-jp.github.io/0bsolete-Lab/"><img src="asset/bg-nw-logo-round-small.png" alt="logo" height="40px"></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container mt-3">
+        <h2>
+            Using SpeechAgent for voice chat
+        </h2>
+
+        <h3 class="mt-4 mb-2">
+            Setting up NetDuetto
+        </h3>
+
+        <i class="far fa-arrow-alt-circle-right"></i> <a href="https://www.netduetto.net/download/">Download NetDuetto</a> and install it.
+        <br>
+        <i class="far fa-arrow-alt-circle-right"></i> Open Google Chrome, play some music on YouTube.
+        <br>
+        <i class="far fa-arrow-alt-circle-right"></i> Navigate to Settings->System->Sound->App Volume and Device Preference, change Google Chrome sound output to NetDuetto.
+        <div class="alert alert-info mt-3" role="alert">
+            <i class="far fa-check-circle"></i>
+            <strong>CHECK: </strong>PC stopped playing music.
+        </div>
+        <i class="far fa-arrow-alt-circle-right"></i> Right click on the volume control icon in the taskbar, open Sound. Then navigate to Recording tab, open NetDuetto Properties.
+        <br>
+        <i class="far fa-arrow-alt-circle-right"></i> Turn on "listen to this device" in Listen tab. Choose the playback device which you want to hear SpeechAgent voice from.
+        <br>
+        <div class="alert alert-info mt-3" role="alert">
+            <i class="far fa-check-circle"></i>
+            <strong>CHECK: </strong>PC started playing music again.
+        </div>
+        <h3 class="mt-4 mb-2">
+            Opening the web app
+        </h3>
+        <i class="far fa-arrow-alt-circle-right"></i> <a href="index_en.html">SpeechAgent</a>
+        <h3 class="mt-4 mb-2">
+            Setting up VRChat
+        </h3>
+        <i class="far fa-arrow-alt-circle-right"></i> Run VRChat, open in-game settings, navigate to System->Microphone, change device to Yamaha NetDuetto.
+        <div class="alert alert-danger mt-3" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>WARNING: </strong>From now on, any sounds played in Google Chrome will be broadcasted in VRChat.
+        </div>
+        <div class="alert alert-info" role="alert">
+            <i class="far fa-check-circle"></i>
+            <strong>CHECK: </strong>You spoke into your microphone, SpeechAgent repeated it, and the mic icon in VRChat flashed red.
+        </div>
+        Done!
+    </div>
+</body>
+
+</html>
